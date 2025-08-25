@@ -1,0 +1,194 @@
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f0e6d2;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #3c3c3c;
+            line-height: 1.6;
+            text-align: center;
+            padding: 0 20px 60px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #a67c52;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            font-weight: 600;
+            font-size: 1.1rem;
+            user-select: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: #deb887;
+            color: #5a3e1b;
+            transform: scale(1.1);
+            outline: none;
+        }
+
+        /* Headings */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 1.5rem 0 0.8rem;
+            color: #5a3e1b;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #7d5a2d;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #7d5a2d;
+        }
+
+        /* Paragraph */
+        p {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+            color: #4b3b1b;
+        }
+
+        /* Mark & Del */
+        mark {
+            background-color: #deb887;
+            padding: 0 4px;
+            border-radius: 4px;
+            color: #5a3e1b;
+            font-weight: 600;
+        }
+
+        del {
+            color: #9e7c53;
+            text-decoration-thickness: 3px;
+        }
+
+        /* Links */
+        a {
+            color: #a67c52;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover,
+        a:focus {
+            color: #5a3e1b;
+            outline: none;
+        }
+
+        /* Abbr styling */
+        abbr[title] {
+            cursor: help;
+            border-bottom: 1px dotted #a67c52;
+            font-weight: 600;
+        }
+
+        /* BDO */
+        bdo {
+            display: inline-block;
+            margin: 0.7rem 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #6e4c1f;
+        }
+
+        /* Image */
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            color: #7d5a2d;
+            border-top: 1px solid #deb887;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        tr,td,th{
+            border: black;
+            box-shadow: #271f0e;
+            border-radius: 0%;
+            padding: 20px;
+        }
+
+        thead{
+            background-color: #4b3b1b;
+            color: #3c3c3c;
+        }
+
+        .test-class{
+            border: 10px solid black;
+        }

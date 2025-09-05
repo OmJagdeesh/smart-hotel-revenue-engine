@@ -2,35 +2,34 @@
 // Vanilla JavaScript DOM Manipulations
 // ===========================
 
-// Change the text using innerHTML
+// Change the heading text
 document.getElementById("changeTextBtn").onclick = function() {
     document.getElementById("myHeading").innerHTML = "Heading Changed!";
 };
 
-// Change CSS properties like color and position
+// Change color of heading
 document.getElementById("changeColorBtn").onclick = function() {
     document.getElementById("myHeading").style.color = "red";
 };
 
+// Move heading
 document.getElementById("moveHeadingBtn").onclick = function() {
     let heading = document.getElementById("myHeading");
-    heading.style.position = "relative";
     heading.style.left = "50px";
 };
 
-// Change the image source after clicking a button
+// Change image source
 document.getElementById("changeImageBtn").onclick = function() {
     document.getElementById("myImage").src = "https://via.placeholder.com/200/ff0000/ffffff?text=New+Image";
 };
 
-// Add a text node and attach it to a parent node
+// Add text node
 document.getElementById("addTextNodeBtn").onclick = function() {
     let newText = document.createTextNode("This is a dynamically added text.");
-    let container = document.getElementById("container");
-    container.appendChild(newText);
+    document.getElementById("container").appendChild(newText);
 };
 
-// Delete a node
+// Delete first paragraph
 document.getElementById("deleteNodeBtn").onclick = function() {
     let paragraphs = document.getElementsByClassName("myClass");
     if(paragraphs.length > 0) {
@@ -43,21 +42,23 @@ document.getElementById("deleteNodeBtn").onclick = function() {
 // ===========================
 
 $(document).ready(function() {
-    // Change button text using jQuery
+    // Change button text
     $("#changeTextBtn").text("Click to Change Heading Text");
 
-    // Set background-image using jQuery CSS property
-    $("#container").css("background-image", "url('https://via.placeholder.com/400x100')");
-    $("#container").css("background-size", "cover");
-
-    // Access HTML form data using jQuery
-    $("#myForm").submit(function(event) {
-        event.preventDefault(); // prevent form submission
-        let name = $("#nameInput").val();
-        let age = $("#ageInput").val();
-        alert("Name: " + name + "\nAge: " + age);
+    // Set background image for container
+    $("#container").css({
+        "background-image": "url('https://via.placeholder.com/400x100')",
+        "background-size": "cover"
     });
 
-    // Add attribute using jQuery
+    // Access form data
+    $("#myForm").submit(function(event) {
+        event.preventDefault();
+        let name = $("#nameInput").val();
+        let age = $("#ageInput").val();
+        alert(`Name: ${name}\nAge: ${age}`);
+    });
+
+    // Add attribute
     $("#myImage").attr("title", "This is a dynamically added title");
 });

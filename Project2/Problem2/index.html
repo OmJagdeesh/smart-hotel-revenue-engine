@@ -3,38 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM Manipulation Example</title>
+    <title>DOM Manipulation with Bootstrap</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
-  <body>
-    <h1 id="myHeading">Welcome to DOM Manipulation</h1>
-    <p class="myClass">This is a paragraph with class "myClass".</p>
-    <p class="myClass">Another paragraph with class "myClass".</p>
+  <body class="bg-light">
+    <div class="container mt-5">
+      <h1 id="myHeading" class="text-center mb-4">
+        Welcome to DOM Manipulation
+      </h1>
 
-    <button id="changeTextBtn">Change Heading Text</button>
-    <button id="moveHeadingBtn">Move Heading</button>
-    <button id="changeColorBtn">Change Color</button>
-    <button id="changeImageBtn">Change Image</button>
-    <button id="addTextNodeBtn">Add Text Node</button>
-    <button id="deleteNodeBtn">Delete Paragraph</button>
+      <div class="mb-3">
+        <p class="myClass alert alert-secondary">
+          This is a paragraph with class "myClass".
+        </p>
+        <p class="myClass alert alert-secondary">
+          Another paragraph with class "myClass".
+        </p>
+      </div>
 
-    <div id="container"></div>
+      <div class="mb-3 d-flex flex-wrap gap-2">
+        <button id="changeTextBtn" class="btn btn-primary">
+          Change Heading Text
+        </button>
+        <button id="moveHeadingBtn" class="btn btn-warning">
+          Move Heading
+        </button>
+        <button id="changeColorBtn" class="btn btn-danger">Change Color</button>
+        <button id="changeImageBtn" class="btn btn-info">Change Image</button>
+        <button id="addTextNodeBtn" class="btn btn-success">
+          Add Text Node
+        </button>
+        <button id="deleteNodeBtn" class="btn btn-secondary">
+          Delete Paragraph
+        </button>
+      </div>
 
-    <img
-      id="myImage"
-      src="https://via.placeholder.com/200"
-      alt="Placeholder Image"
-    />
+      <div id="container" class="p-3 my-3 border rounded text-center">
+        <img
+          id="myImage"
+          src="https://via.placeholder.com/200"
+          class="img-fluid rounded"
+          alt="Placeholder Image"
+        />
+      </div>
 
-    <h3>Form Example</h3>
-    <form id="myForm">
-      Name: <input type="text" id="nameInput" /><br /><br />
-      Age: <input type="number" id="ageInput" /><br /><br />
-      <input type="submit" value="Submit" />
-    </form>
+      <h3 class="mt-4">Form Example</h3>
+      <form id="myForm" class="row g-3">
+        <div class="col-md-6">
+          <label for="nameInput" class="form-label">Name</label>
+          <input type="text" class="form-control" id="nameInput" />
+        </div>
+        <div class="col-md-6">
+          <label for="ageInput" class="form-label">Age</label>
+          <input type="number" class="form-control" id="ageInput" />
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
 
     <script src="script.js"></script>
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

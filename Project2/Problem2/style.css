@@ -1,0 +1,19 @@
+#myHeading {
+    color: blue;
+    position: relative;
+}
+
+.myClass {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+#myImage {
+    width: 200px;
+    height: auto;
+}
+
+#container {
+    margin-top: 20px;
+    padding: 20px;
+}

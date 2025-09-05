@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <h1 id="myHeading">Welcome to DOM Manipulation</h1>
+    <p class="myClass">This is a paragraph with class "myClass".</p>
+    <p class="myClass">Another paragraph with class "myClass".</p>
+
+    <button id="changeTextBtn">Change Heading Text</button>
+    <button id="moveHeadingBtn">Move Heading</button>
+    <button id="changeColorBtn">Change Color</button>
+    <button id="changeImageBtn">Change Image</button>
+    <button id="addTextNodeBtn">Add Text Node</button>
+    <button id="deleteNodeBtn">Delete Paragraph</button>
+
+    <div id="container"></div>
+
+    <img
+      id="myImage"
+      src="https://via.placeholder.com/200"
+      alt="Placeholder Image"
+    />
+
+    <h3>Form Example</h3>
+    <form id="myForm">
+      Name: <input type="text" id="nameInput" /><br /><br />
+      Age: <input type="number" id="ageInput" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>

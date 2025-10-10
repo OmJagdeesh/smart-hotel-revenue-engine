@@ -1,0 +1,107 @@
+/* Reset default margin/padding for consistent styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic app layout */
+.App {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #6e7cde, #5565c7);
+  /* Subtle gradient background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main title styling */
+.title {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  /* Subtle text shadow */
+}
+
+/* Product gallery layout */
+.product-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  /* Add more space between cards */
+  flex-wrap: wrap;
+  max-width: 1200px;
+  /* Limit max width for larger screens */
+  padding: 20px;
+}
+
+/* Styling for each product card */
+.product-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
+  width: 300px;
+  height: 450px;
+  /* Slightly taller cards for a better look */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  /* Lifting effect */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  /* Darker, more prominent shadow on hover */
+}
+
+/* Image styling */
+.product-image {
+  width: 100%;
+  height: 250px;
+  /* Fixed image height */
+  object-fit: cover;
+  /* Ensure the image fits the box */
+  transition: transform 0.4s ease-in-out;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+  /* Subtle zoom effect on image hover */
+}
+
+/* Product info section */
+.product-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: #f9f9f9;
+  border-top: 2px solid #eee;
+  /* Subtle border for separation */
+  flex-grow: 1;
+}
+
+/* Product title */
+.product-info h3 {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Product price */
+.product-info p {
+  font-size: 1.2rem;
+  color: #007BFF;
+  font-weight: bold;
+  margin-top: 10px;
+}

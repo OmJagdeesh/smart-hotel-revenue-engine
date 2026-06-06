@@ -43,19 +43,6 @@ CREATE TABLE IF NOT EXISTS bookings (
     CONSTRAINT fk_bookings_user FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
-CREATE TABLE IF NOT EXISTS pricing_rules (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    hotel_id BIGINT NOT NULL,
-    season_name VARCHAR(100) NOT NULL,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
-    demand_multiplier DECIMAL(6, 3) NOT NULL,
-    min_occupancy DECIMAL(6, 3) NOT NULL,
-    max_occupancy DECIMAL(6, 3) NOT NULL,
-    active BIT NOT NULL,
-    CONSTRAINT fk_pricing_rule_hotel FOREIGN KEY (hotel_id) REFERENCES hotels (id)
-);
-
 CREATE TABLE IF NOT EXISTS revenue_records (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     hotel_id BIGINT NOT NULL,

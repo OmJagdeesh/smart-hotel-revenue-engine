@@ -12,9 +12,9 @@
 
     <groupId>com.staywise</groupId>
     <artifactId>hotel-revenue-engine</artifactId>
-    <version>1.0.0</version>
-    <name>staywise-hotel-revenue-engine</name>
-    <description>StayWise - Hotel Revenue Management System</description>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>staywise</name>
+    <description>Small hotel revenue project</description>
 
     <properties>
         <java.version>17</java.version>

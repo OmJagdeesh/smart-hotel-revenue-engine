@@ -1,52 +1,48 @@
-# StayWise - Hotel Revenue Management System
+# StayWise
 
-Production-grade full-stack template for multi-tenant hotel revenue optimization.
+This is my hotel revenue management mini project. It has a Spring Boot backend and a React dashboard. The main idea is to store hotels, rooms and bookings, then calculate a room price using occupancy and a demand factor.
 
-## Architecture
-- Backend: Java Spring Boot (Maven)
-- Database: MySQL + JPA/Hibernate
-- Auth: JWT
-- Frontend: React + Recharts
-- Pattern: Controller -> Service -> Repository
+I kept the project as a simple full-stack app instead of making it a big production system.
 
-## Project Structure
+## Tech Used
+
+- Java 17 + Spring Boot
+- Spring Security + JWT login
+- Spring Data JPA
+- MySQL
+- React + Vite
+- Recharts
+
+## Folder Structure
 
 ```text
-smart-hotel-revenue-engine/
-  backend/
-    src/main/java/com/staywise/hotel_revenue_engine/
-      controller/
-      service/
-      repository/
-      entity/
-      dto/
-      config/
-      security/
-      exception/
-    src/main/resources/
-      application.yml
-      schema.sql
-  frontend/
-    src/
-      components/
-      services/
+backend/
+  src/main/java/com/staywise/hotel_revenue_engine/
+    controller/       REST APIs
+    service/          main business logic
+    repository/       JPA repositories
+    entity/           database tables
+    dto/              request/response classes
+    config/           Spring config and sample data
+    security/         JWT related code
+
+frontend/
+  src/
+    App.jsx
+    components/
+    services/
 ```
 
-## Multi-Tenant Model
-- Each `Hotel` is a tenant.
-- Tenant isolation is enforced by `hotel_id` foreign key in all major business tables (`rooms`, `bookings`, `pricing_rules`, `revenue_records`, hotel users in `users`).
+## How To Run
 
-## Backend Setup
-1. Create MySQL DB user and ensure MySQL is running.
-2. Update `backend/src/main/resources/application.yml` datasource credentials if needed.
-3. Run backend:
+Backend:
 
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
-## Frontend Setup
+Frontend:
 
 ```bash
 cd frontend
@@ -54,93 +50,74 @@ npm install
 npm run dev
 ```
 
-Default URL: `http://localhost:5173`
+Frontend runs on `http://localhost:5173`.
 
-## API Docs (Swagger)
-- UI: `http://localhost:8080/swagger-ui/index.html`
-- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+## Database
 
-## Seed Credentials
+The backend expects MySQL on localhost. The current username/password is in:
+
+```text
+backend/src/main/resources/application.yml
+```
+
+By default it uses `staywise_db` and lets Hibernate update the tables.
+
+## Login Details
+
 - Admin: `admin@staywise.io` / `Admin@123`
-- Hotel Manager: `manager@sunrise.com` / `Manager@123`
+- Manager: `manager@sunrise.com` / `Manager@123`
 
-## Sample cURL Requests
+## Main Pricing Formula
 
-### 1. Login
+The pricing code is in `PricingService`.
+
+```text
+price = base_price * demand_factor * (1 + occupancy_rate * 0.5)
+```
+
+Example: if the base price is 1000, demand factor is 1.2 and occupancy is 80%, the final price becomes 1680.
+
+## APIs I Mostly Tested
+
+Login:
+
 ```bash
 curl -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"manager@sunrise.com","password":"Manager@123"}'
 ```
 
-### 2. Register Staff (tenant user)
-```bash
-curl -X POST http://localhost:8080/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{
-    "email":"staff1@sunrise.com",
-    "password":"Staff@1234",
-    "fullName":"Front Desk Staff",
-    "role":"STAFF",
-    "hotelId":1
-  }'
-```
+Calculate price:
 
-### 3. Create Booking (replace JWT)
-```bash
-curl -X POST http://localhost:8080/api/bookings \
-  -H "Authorization: Bearer <JWT_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "hotelId":1,
-    "roomId":1,
-    "userId":2,
-    "checkInDate":"2026-04-20",
-    "checkOutDate":"2026-04-22",
-    "demandFactor":1.15
-  }'
-```
-
-### 4. Calculate Dynamic Price
 ```bash
 curl -X POST http://localhost:8080/api/pricing/calculate \
   -H "Authorization: Bearer <JWT_TOKEN>" \
   -H "Content-Type: application/json" \
-  -d '{
-    "hotelId":1,
-    "roomId":1,
-    "businessDate":"2026-04-20",
-    "demandFactor":1.2
-  }'
+  -d '{"hotelId":1,"roomId":1,"businessDate":"2026-04-20","demandFactor":1.2}'
 ```
 
-### 5. Analytics
+Analytics:
+
 ```bash
 curl "http://localhost:8080/api/analytics/hotel/1?startDate=2026-04-01&endDate=2026-04-30" \
   -H "Authorization: Bearer <JWT_TOKEN>"
 ```
 
-## Core Pricing Logic
-Implemented in `PricingServiceImpl`:
-
-```text
-price = base_price * demand_factor * (1 + occupancy_rate * 0.5)
-```
-
-This increases price as occupancy grows and adjusts for demand seasonality.
-
-## Scheduled Job
-- Daily metrics refresh runs at 1:00 AM server time.
-- Stores daily `RevenueRecord` with revenue, occupancy and RevPAR.
-
-## Testing
-Run unit tests:
+## Tests
 
 ```bash
 cd backend
 mvn test
 ```
 
-Includes:
-- Pricing engine formula test
-- Double-booking prevention test
+Right now I have tests for:
+
+- price calculation
+- double-booking check
+
+## Things I Would Improve Later
+
+- Add better validation messages on frontend
+- Add booking create form in React
+- Replace the hard-coded JWT text box with a real login page
+- Add more test cases for roles and hotel access

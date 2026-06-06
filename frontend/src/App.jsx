@@ -56,8 +56,8 @@ function App() {
   return (
     <div className="page">
       <header>
-        <h1>StayWise Revenue Command Center</h1>
-        <p>Monitor occupancy and optimize hotel room pricing in real time.</p>
+        <h1>StayWise Hotel Dashboard</h1>
+        <p>Small dashboard I made for checking revenue and occupancy numbers.</p>
       </header>
 
       <section className="filters">
@@ -84,9 +84,9 @@ function App() {
       {data ? (
         <>
           <section className="cards">
-            <StatsCard title="Total Revenue" value={`INR ${Number(data.totalRevenue).toLocaleString()}`} helper="Selected date range" />
-            <StatsCard title="Average Occupancy" value={`${(Number(data.averageOccupancy) * 100).toFixed(1)}%`} helper="Across all loaded days" />
-            <StatsCard title="Average RevPAR" value={`INR ${Number(data.averageRevPar).toLocaleString()}`} helper="Revenue per available room" />
+            <StatsCard title="Total Revenue" value={`INR ${Number(data.totalRevenue).toLocaleString()}`} helper="For this date range" />
+            <StatsCard title="Average Occupancy" value={`${(Number(data.averageOccupancy) * 100).toFixed(1)}%`} helper="Simple average from records" />
+            <StatsCard title="Average RevPAR" value={`INR ${Number(data.averageRevPar).toLocaleString()}`} helper="Revenue / available rooms" />
           </section>
 
           <section className="grid">

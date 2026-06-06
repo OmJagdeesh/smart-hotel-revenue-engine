@@ -11,7 +11,6 @@ import com.staywise.hotel_revenue_engine.repository.BookingRepository;
 import com.staywise.hotel_revenue_engine.repository.HotelRepository;
 import com.staywise.hotel_revenue_engine.repository.RoomRepository;
 import com.staywise.hotel_revenue_engine.repository.UserRepository;
-import com.staywise.hotel_revenue_engine.service.impl.BookingServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class BookingServiceImplTest {
+class BookingServiceTest {
 
     @Mock
     private BookingRepository bookingRepository;
@@ -44,11 +43,11 @@ class BookingServiceImplTest {
     @Mock
     private PricingService pricingService;
 
-    private BookingServiceImpl bookingService;
+    private BookingService bookingService;
 
     @BeforeEach
     void setup() {
-        bookingService = new BookingServiceImpl(
+        bookingService = new BookingService(
                 bookingRepository,
                 roomRepository,
                 userRepository,

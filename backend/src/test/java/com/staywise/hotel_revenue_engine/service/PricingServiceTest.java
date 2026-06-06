@@ -7,7 +7,6 @@ import com.staywise.hotel_revenue_engine.repository.BookingRepository;
 import com.staywise.hotel_revenue_engine.repository.HotelRepository;
 import com.staywise.hotel_revenue_engine.repository.RevenueRecordRepository;
 import com.staywise.hotel_revenue_engine.repository.RoomRepository;
-import com.staywise.hotel_revenue_engine.service.impl.PricingServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,16 +18,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class PricingServiceImplTest {
+class PricingServiceTest {
 
     @Mock
     private RoomRepository roomRepository;
-
-    @Mock
-    private BookingService bookingService;
 
     @Mock
     private HotelRepository hotelRepository;
@@ -39,13 +36,12 @@ class PricingServiceImplTest {
     @Mock
     private RevenueRecordRepository revenueRecordRepository;
 
-    private PricingServiceImpl pricingService;
+    private PricingService pricingService;
 
     @BeforeEach
     void setup() {
-        pricingService = new PricingServiceImpl(
+        pricingService = new PricingService(
                 roomRepository,
-                bookingService,
                 hotelRepository,
                 bookingRepository,
                 revenueRecordRepository
@@ -65,7 +61,8 @@ class PricingServiceImplTest {
         request.setDemandFactor(1.2);
 
         when(roomRepository.findById(10L)).thenReturn(Optional.of(room));
-        when(bookingService.getOccupancyRate(1L, request.getBusinessDate())).thenReturn(0.8);
+        when(roomRepository.countByHotelIdAndActiveTrue(1L)).thenReturn(10L);
+        when(bookingRepository.countOccupiedRoomsByHotelAndDate(any(), any(), any())).thenReturn(8L);
 
         PricingResponse response = pricingService.calculatePrice(request);
 
